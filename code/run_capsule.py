@@ -300,11 +300,22 @@ if __name__ == "__main__":
                     recording=recording
                 )
 
-            # safe delete the output folder
-            try:
-                shutil.rmtree(spikesorted_raw_output_folder / recording_name / "sorter_output")
-            except Exception as e:
-                logging.info(f"\tError deleting sorter output folder: {e}")
+            # Preserve the complete native Kilosort4 output in results
+            preserved_output_folder = sorting_output_folder / "kilosort4"
+            
+            logging.info(
+                f"\tSaving native Kilosort4 output to {preserved_output_folder}"
+            )
+            
+            if preserved_output_folder.exists():
+                shutil.rmtree(preserved_output_folder)
+            
+            shutil.copytree(
+                ks4_output_folder,
+                preserved_output_folder
+            )
+            
+            logging.info("\tNative Kilosort4 output copied successfully"){e}")
 
             # remove empty units
             sorting = sorting.remove_empty_units()
