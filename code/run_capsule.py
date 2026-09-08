@@ -315,7 +315,7 @@ if __name__ == "__main__":
                 preserved_output_folder
             )
             
-            logging.info("\tNative Kilosort4 output copied successfully"){e}")
+            logging.info("\tNative Kilosort4 output copied successfully")
 
             # remove empty units
             sorting = sorting.remove_empty_units()
