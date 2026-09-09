@@ -311,7 +311,7 @@ if __name__ == "__main__":
                 shutil.rmtree(preserved_output_folder)
             
             shutil.copytree(
-                ks4_output_folder,
+                spikesorted_raw_output_folder / recording_name / "sorter_output",
                 preserved_output_folder
             )
             
